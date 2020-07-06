@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import classes from "./App.css";
 import Person from "./Person/Person";
-import Validation from "./Validation/Validation";
-import Char from "./Char/Char";
 
 //Class Component
 class App extends Component {
@@ -15,7 +13,6 @@ class App extends Component {
     ],
     otherState: "Some other values",
     showPersons: false,
-    userInput: "",
   };
 
   switchNameHandler = (newName) => {
@@ -59,18 +56,6 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
 
-  //UserInput
-  userInputChangeHandler = (event) => {
-    this.setState({ userInput: event.target.value });
-  };
-
-  characterDeleteHandler = (index) => {
-    const text = this.state.userInput.split("");
-    text.splice(index, 1);
-    const updatedText = text.join("");
-    this.setState({ userInput: updatedText });
-  };
-
   render() {
     let persons = null;
     const Assignedclasses = [];
@@ -83,16 +68,6 @@ class App extends Component {
     if (this.state.persons.length <= 1) {
       Assignedclasses.push(classes.red);
     }
-
-    const charList = this.state.userInput.split("").map((char, index) => {
-      return (
-        <Char
-          character={char}
-          key={index}
-          clicked={() => this.characterDeleteHandler(index)}
-        />
-      );
-    });
 
     if (this.state.showPersons) {
       persons = (
@@ -119,16 +94,6 @@ class App extends Component {
    
         <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
-
-        <hr />
-        <input
-          type="text"
-          onChange={this.userInputChangeHandler}
-          value={this.state.userInput}
-        />
-        <p>{this.state.userInput}</p>
-        <Validation inputLength={this.state.userInput.length} />
-        {charList}
       </div>
     );
     // Why we are using React in header, We are using JSX to write the as HTML format but not HTML. The reason behind this is easier to understand the Code. It uppper return statement while compilation it turns into below return statement
