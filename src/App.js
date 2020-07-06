@@ -1,24 +1,9 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
 
 import "./App.css";
 import Person from "./Person/Person";
 import Validation from "./Validation/Validation";
 import Char from "./Char/Char";
-
-const StyledButton = styled.button`
-background-color: ${props => props.alt? 'red' : 'green'};
-color: white;
-font: inherit;
-border: 1px solid blue;
-padding: 8px;
-cursor: pointer;
-
-&:hover {
-  background-color: ${props => props.alt? 'salmon' : 'lightcyan'};
-  color: black;
-}
-`;
 
 //Class Component
 class App extends Component {
@@ -88,14 +73,14 @@ class App extends Component {
 
   render() {
     //working with inline styles
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer",
-    };
+    // const style = {
+    //   backgroundColor: "green",
+    //   color: "white",
+    //   font: "inherit",
+    //   border: "1px solid blue",
+    //   padding: "8px",
+    //   cursor: "pointer",
+    // };
 
     let persons = null;
 
