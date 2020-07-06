@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./App.css";
+import classes from "./App.css";
 import Person from "./Person/Person";
 import Validation from "./Validation/Validation";
 import Char from "./Char/Char";
@@ -72,26 +72,16 @@ class App extends Component {
   };
 
   render() {
-    //working with inline styles
-    // const style = {
-    //   backgroundColor: "green",
-    //   color: "white",
-    //   font: "inherit",
-    //   border: "1px solid blue",
-    //   padding: "8px",
-    //   cursor: "pointer",
-    // };
-
     let persons = null;
+    const Assignedclasses = [];
+    let btnClass = '';
 
-    const classes = [];
-    console.log(this.state.persons.length);
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      Assignedclasses.push(classes.red);
     }
 
     if (this.state.persons.length <= 1) {
-      classes.push("italic");
+      Assignedclasses.push(classes.red);
     }
 
     const charList = this.state.userInput.split("").map((char, index) => {
@@ -120,21 +110,14 @@ class App extends Component {
           })}
         </div>
       );
-
-      // style.backgroundColor = "red";
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // };
+      
+      btnClass = classes.Red;
     }
-    console.log(classes.join(" "));
     return (
-      <div className="App">
-        <h1 className={classes.join(" ")}>Hi, I am a React App! </h1>
-        {/* <button style={style} onClick={this.togglePersonsHandler}>
-          Toggle Persons
-        </button> */}
-        <button className="button" onClick={this.togglePersonsHandler}>Toggle Persons</button>
+      <div className={classes.App}>
+        <h1 className={Assignedclasses.join(" ")}>Hi, I am a React App! </h1>
+   
+        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
 
         <hr />
